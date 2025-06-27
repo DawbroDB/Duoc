@@ -1,0 +1,33 @@
+def saludar():
+    print("¡Hola! Bienvenido al menú.")
+
+def despedirse():
+    print("¡Hasta luego! Gracias por usar el menú.")
+
+def mostrar_menu():
+    print("\n--- Menú Simple ---")
+    print("1. Saludar")
+    print("2. Despedirse")
+    print("3. Salir")
+    print("-------------------")
+
+def main():
+    while True:
+        mostrar_menu()
+        try:
+            opcion = int(input("Elige una opción: "))
+        except ValueError:
+            print("Por favor, ingresa un número válido.")
+            continue
+        match opcion:
+            case 1:
+                saludar()
+            case 2:
+                despedirse()
+            case 3:
+                print("Saliendo del programa.")
+                break
+            case _:
+                print("Opción no válida. Inténtalo de nuevo.")
+
+main()
