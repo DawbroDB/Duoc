@@ -1,0 +1,17 @@
+from gtts import gTTS
+import os 
+import time
+import random
+
+parte = ["Pie Derecho", "Pie Izquierdo", "Mano Derecha", "Mano Izquierda"]
+lugar = ["Rojo", "Verde", "Amarillo", "Azul"]
+
+
+for i in range(10):
+    parte_random = random.choice(parte)
+    lugar_random = random.choice(lugar)
+    texto = f"{parte_random} {lugar_random}"
+    tts = gTTS(text=texto, lang = 'es')
+    tts.save("texto.mp3")
+    os.system("start texto.mp3")   
+    time.sleep(6)
