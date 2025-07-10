@@ -1,0 +1,105 @@
+
+personas = {}
+
+
+
+
+def ingresar():
+    print ("\nHa selecionado la opcion de ingresar una nueva persona al sistema.")
+    rut = (input("\nIngrese el RUT de la persona: "))
+    if rut in personas:
+        print (f"\nERROR, el rut {rut} ya se encuentra ingresado")
+        return
+    nombre = input("\nIngrese el nombre de la persona: ").capitalize()
+    apellido = input("\nIngrese el apellido de la persona: ").capitalize()
+    try:
+        edad = int(input("\nIngrese la edad de la persona: "))
+    except ValueError:
+        print("La edad debe ser un número entero.")
+        return
+    nacionalidad = input("\nIngrese la nacionalidad de la persona: ")
+    personas[rut] = {"nombre": nombre, "apellido": apellido, "edad": edad, "nacionalidad": nacionalidad}
+    print("Persona ingresada exitosamente.")
+    return (personas)
+
+
+
+def eliminar():
+    if not personas:
+        print ("ERROR, No hay personas registradas")
+        return
+    print ("\nHa seleccionado la opcion de eliminar una persona al sistema")
+    eliminar = input("\nIngrese el rut a eliminar del sistema: ")
+    if eliminar not in personas:
+        print (f"\nERROR, El rut {eliminar} no se encuentra en el sistema")
+        return
+    print (f"\nRut {eliminar} eliminado correctamente junto con sus datos")
+    personas.pop(eliminar)
+    return (personas)
+
+
+
+
+def consultar():
+    if not personas:
+        print ("ERROR, No hay personas registradas")
+        return
+    print ("\nHa seleccionado consultar los datos de una persona por su rut")
+    consulta = input("\nIngrese el rut de la persona: ")
+    if consulta not in personas:
+        print (f"\nERROR, El rut {consulta} no se encuentra en el sistema")
+        return
+    for consulta, datos in personas.items():
+        print (f"rut: {consulta}, nombre: {datos['nombre']}, apellido: {datos['apellido']}, edad: {datos['edad']}, nacionalidad {datos['nacionalidad']}")
+    return
+
+
+def listar():
+    for rut,datos in personas.items():
+        print (f"rut: {rut}, nombre: {datos['nombre']}, apellido: {datos['apellido']}, edad: {datos['edad']}, nacionalidad {datos['nacionalidad']}")
+    return
+
+def main():
+    while True:
+        print ("""\n1) Ingresar una nueva persona al sistema.
+2) Eliminar una persona registrada mediante su RUT.
+3) Consultar los datos de una persona especifica mediante su RUT.
+4) Listar todas las personas registradas en el sistema.
+5) Salir del programa.""")
+        try:        
+            opcion = int(input("\nIngrese una opcion: "))
+        except ValueError:
+            print ("\nERROR, Ingrese un numero")
+            continue
+        match opcion:
+            case 1:
+                ingresar()
+            case 2:
+                eliminar()
+            case 3:
+                consultar()
+            case 4:
+                listar()
+            case 5:
+                print ("\nSaliendo del programa")
+                break
+            case __:
+                print ("ERROR, Ingrese una opcion valida")
+                continue
+
+main()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
