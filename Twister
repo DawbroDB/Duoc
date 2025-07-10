@@ -7,7 +7,7 @@ parte = ["Pie Derecho", "Pie Izquierdo", "Mano Derecha", "Mano Izquierda"]
 lugar = ["Rojo", "Verde", "Amarillo", "Azul"]
 
 
-for i in range(10):
+while True:
     parte_random = random.choice(parte)
     lugar_random = random.choice(lugar)
     texto = f"{parte_random} {lugar_random}"
